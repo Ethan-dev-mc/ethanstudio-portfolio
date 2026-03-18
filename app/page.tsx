@@ -160,21 +160,37 @@ export default function Home() {
 
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
-        {/* Fondo tech: grid SVG estático + blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Grid de puntos SVG — no afecta performance */}
-          <svg className="absolute inset-0 w-full h-full opacity-[0.15]" xmlns="http://www.w3.org/2000/svg">
+
+        {/* ── FONDO HERO (layers ordenados por z-index) ── */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+
+          {/* z-0 · Gradiente radial base */}
+          <div className="absolute inset-0 z-0 hero-base" />
+
+          {/* z-1 · Grid SVG de líneas sutiles */}
+          <svg className="absolute inset-0 z-10 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                <circle cx="1.5" cy="1.5" r="1.5" fill="#00b4d8" />
+              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00b4d8" strokeWidth="0.8"/>
+              </pattern>
+              <pattern id="dots" x="30" y="30" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="0" cy="0" r="1.2" fill="#00b4d8" />
               </pattern>
             </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
             <rect width="100%" height="100%" fill="url(#dots)" />
           </svg>
-          {/* Blobs de color */}
-          <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#00b4d8]/8 rounded-full blur-3xl animate-blob" />
-          <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-3xl animate-blob delay-300" />
+
+          {/* z-2 · Orbes de luz animados (sin filter:blur, ligeros) */}
+          <div className="hero-orb hero-orb-1 z-20" />
+          <div className="hero-orb hero-orb-2 z-20" />
+          <div className="hero-orb hero-orb-3 z-20" />
+
+          {/* z-3 · Línea de escaneo */}
+          <div className="hero-scanline z-30" />
+
         </div>
+        {/* ── FIN FONDO ── */}
 
         <div className="relative text-center max-w-4xl mx-auto animate-fade-in-up">
           {/* Badge */}
