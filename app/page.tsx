@@ -160,11 +160,20 @@ export default function Home() {
 
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
-        {/* Fondos decorativos con gradiente */}
+        {/* Fondo tech: grid SVG estático + blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Grid de puntos SVG — no afecta performance */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.15]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+                <circle cx="1.5" cy="1.5" r="1.5" fill="#00b4d8" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dots)" />
+          </svg>
+          {/* Blobs de color */}
           <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#00b4d8]/8 rounded-full blur-3xl animate-blob" />
           <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#7c3aed]/8 rounded-full blur-3xl animate-blob delay-300" />
-          <div className="absolute top-2/3 left-1/4 w-[300px] h-[300px] bg-[#00f5a0]/5 rounded-full blur-3xl animate-blob delay-200" />
         </div>
 
         <div className="relative text-center max-w-4xl mx-auto animate-fade-in-up">
