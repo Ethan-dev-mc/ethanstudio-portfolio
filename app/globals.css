@@ -26,10 +26,10 @@ body {
   color: #ffffff;
   font-family: var(--font-geist-sans), Arial, sans-serif;
   background-image:
-    radial-gradient(circle, rgba(0, 180, 216, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px, 80px 80px, 80px 80px;
+    radial-gradient(circle, rgba(0, 180, 216, 0.25) 1px, transparent 1px),
+    linear-gradient(rgba(0, 180, 216, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.07) 1px, transparent 1px);
+  background-size: 30px 30px, 90px 90px, 90px 90px;
   background-position: 0 0, -1px -1px, -1px -1px;
 }
 
