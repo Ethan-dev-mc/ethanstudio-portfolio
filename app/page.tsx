@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 /* ⚠️ CAMBIA ESTE NÚMERO POR TU WHATSAPP REAL (con código de país: 52 para México) */
-const WHATSAPP = "521234567890";
+const WHATSAPP = "523316385546";
 const MENSAJE = encodeURIComponent(
   "Hola! Vi tu sitio web y me interesa saber más sobre sus servicios para mi negocio."
 );
@@ -96,11 +96,10 @@ export default function Home() {
 
       {/* ===== NAVBAR ===== */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrollY > 50
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50
             ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
@@ -244,9 +243,8 @@ export default function Home() {
             {planes.map((plan, i) => (
               <div
                 key={i}
-                className={`glass rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 relative ${
-                  plan.popular ? "animate-glow" : "hover:border-white/20"
-                }`}
+                className={`glass rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 relative ${plan.popular ? "animate-glow" : "hover:border-white/20"
+                  }`}
                 style={plan.popular ? { borderColor: "rgba(0, 180, 216, 0.4)" } : {}}
               >
                 {/* Badge popular */}
@@ -286,11 +284,10 @@ export default function Home() {
                   href={LINK_WA}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block text-center font-semibold px-6 py-3.5 rounded-full transition-all hover:scale-105 text-sm ${
-                    plan.popular
+                  className={`block text-center font-semibold px-6 py-3.5 rounded-full transition-all hover:scale-105 text-sm ${plan.popular
                       ? "bg-[#00b4d8] hover:bg-[#00b4d8]/85 text-black font-bold"
                       : "border hover:bg-white/5"
-                  }`}
+                    }`}
                   style={!plan.popular ? { borderColor: plan.color, color: plan.color } : {}}
                 >
                   Quiero este plan
