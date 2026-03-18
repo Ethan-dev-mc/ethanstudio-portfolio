@@ -161,37 +161,6 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
 
-        {/* ── FONDO HERO (layers ordenados por z-index) ── */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-
-          {/* z-0 · Gradiente radial base */}
-          <div className="absolute inset-0 z-0 hero-base" />
-
-          {/* z-1 · Grid SVG de líneas sutiles */}
-          <svg className="absolute inset-0 z-10 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#00b4d8" strokeWidth="0.8"/>
-              </pattern>
-              <pattern id="dots" x="30" y="30" width="60" height="60" patternUnits="userSpaceOnUse">
-                <circle cx="0" cy="0" r="1.2" fill="#00b4d8" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
-
-          {/* z-2 · Orbes de luz animados (sin filter:blur, ligeros) */}
-          <div className="hero-orb hero-orb-1 z-20" />
-          <div className="hero-orb hero-orb-2 z-20" />
-          <div className="hero-orb hero-orb-3 z-20" />
-
-          {/* z-3 · Línea de escaneo */}
-          <div className="hero-scanline z-30" />
-
-        </div>
-        {/* ── FIN FONDO ── */}
-
         <div className="relative text-center max-w-4xl mx-auto animate-fade-in-up">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#00b4d8]/10 border border-[#00b4d8]/25 text-[#00b4d8] text-sm px-5 py-2 rounded-full mb-8">

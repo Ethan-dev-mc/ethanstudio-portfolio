@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MatrixBackground from "./components/MatrixBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,25 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="bg-[#0a0a0a] text-white min-h-screen">{children}</body>
+      <body className="text-white min-h-screen" style={{ background: '#050505' }}>
+        {/* z-0: Canvas animado global — fijo, detrás de todo */}
+        <MatrixBackground />
+        {/* z-1: Overlay oscuro para legibilidad del contenido */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 1,
+            background: 'rgba(5, 5, 5, 0.82)',
+            pointerEvents: 'none',
+          }}
+        />
+        {/* z-2: Todo el contenido de la página por encima */}
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
