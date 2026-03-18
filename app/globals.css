@@ -171,16 +171,29 @@ body {
 }
 
 /* =============================================
+   NAVBAR SCROLL (clase añadida por JS, sin re-render)
+   ============================================= */
+.nav-scrolled {
+  background: rgba(7,7,15,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* =============================================
+   CARD POPULAR — glow estático (no anima box-shadow)
+   ============================================= */
+.card-popular {
+  border-color: rgba(0,180,216,0.35);
+  box-shadow: 0 0 30px rgba(0,180,216,0.12), inset 0 0 30px rgba(0,180,216,0.04);
+}
+
+/* =============================================
    ANIMACIONES GENERALES
    ============================================= */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes glow {
-  0%,100% { box-shadow: 0 0 20px rgba(0,180,216,.2), 0 0 0 1px rgba(0,180,216,.3); }
-  50%     { box-shadow: 0 0 40px rgba(0,180,216,.4), 0 0 0 1px rgba(0,180,216,.5); }
 }
 
 @keyframes float {
@@ -189,7 +202,6 @@ body {
 }
 
 .animate-fade-in-up { animation: fadeInUp .7s ease-out forwards; }
-.animate-glow       { animation: glow 2.5s ease-in-out infinite; }
 .animate-float      { animation: float 4s ease-in-out infinite; }
 
 .delay-100 { animation-delay: 100ms; }

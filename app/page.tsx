@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 /* ⚠️ CAMBIA ESTE NÚMERO POR TU WHATSAPP REAL (con código de país: 52 para México) */
 const WHATSAPP = "523316385546";
 const MENSAJE = encodeURIComponent(
@@ -80,27 +78,16 @@ const ventajas = [
   { icono: "🛠️", titulo: "Soporte continuo", desc: "No desaparecemos al entregar. Soporte y actualizaciones cada mes." },
 ];
 
+import { useState } from "react";
+
 export default function Home() {
   const [menuAbierto, setMenuAbierto] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  /* Detecta el scroll para cambiar el fondo del navbar */
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <main className="min-h-screen text-white overflow-x-hidden">
 
       {/* ===== NAVBAR ===== */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50
-            ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10"
-            : "bg-transparent"
-          }`}
-      >
+      <nav id="main-nav" className="fixed top-0 w-full z-50 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <span className="text-xl font-bold gradient-text tracking-tight">
@@ -240,7 +227,7 @@ export default function Home() {
                 data-tilt
                 data-animate="up"
                 data-delay={String(i + 1)}
-                className={`glass rounded-2xl p-8 flex flex-col relative ${plan.popular ? "animate-glow" : "hover:border-white/20"
+                className={`glass rounded-2xl p-8 flex flex-col relative ${plan.popular ? "card-popular" : "hover:border-white/20"
                   }`}
                 style={plan.popular ? { borderColor: "rgba(0, 180, 216, 0.4)" } : {}}
               >
@@ -388,7 +375,7 @@ export default function Home() {
             href={LINK_WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#25d366] hover:bg-[#25d366]/85 text-white font-bold px-10 py-5 rounded-full transition-all hover:scale-105 text-lg animate-glow"
+            className="inline-flex items-center gap-3 bg-[#25d366] hover:bg-[#25d366]/85 text-white font-bold px-10 py-5 rounded-full transition-all hover:scale-105 text-lg"
           >
             {/* Ícono WhatsApp */}
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
