@@ -92,7 +92,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <main className="min-h-screen text-white overflow-x-hidden">
 
       {/* ===== NAVBAR ===== */}
       <nav
@@ -161,27 +161,27 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
 
-        <div className="relative text-center max-w-4xl mx-auto animate-fade-in-up">
+        <div className="relative text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#00b4d8]/10 border border-[#00b4d8]/25 text-[#00b4d8] text-sm px-5 py-2 rounded-full mb-8">
+          <div data-animate="up" className="inline-flex items-center gap-2 bg-[#00b4d8]/10 border border-[#00b4d8]/25 text-[#00b4d8] text-sm px-5 py-2 rounded-full mb-8">
             <span>🚀</span>
             <span>Sitios web listos en 5 días hábiles</span>
           </div>
 
           {/* Título principal */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+          <h1 data-animate="up" data-delay="1" className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
             Tu negocio merece<br />
             <span className="gradient-text">estar en internet</span>
           </h1>
 
           {/* Subtítulo */}
-          <p className="text-lg md:text-xl text-white/55 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p data-animate="up" data-delay="2" className="text-lg md:text-xl text-white/55 mb-10 max-w-2xl mx-auto leading-relaxed">
             Diseñamos sitios web profesionales para negocios en México.
             Rápido, bonito y a un precio justo — sin complicaciones.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div data-animate="up" data-delay="3" className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#servicios"
               className="bg-[#00b4d8] hover:bg-[#00b4d8]/85 text-black font-bold px-8 py-4 rounded-full transition-all hover:scale-105 text-base"
@@ -200,15 +200,15 @@ export default function Home() {
 
           {/* Stats */}
           <div className="mt-20 grid grid-cols-3 gap-6 max-w-sm mx-auto">
-            <div className="text-center">
+            <div data-animate="up" data-delay="3" className="text-center">
               <div className="text-3xl font-bold gradient-text">5</div>
               <div className="text-white/40 text-xs mt-1">días de entrega</div>
             </div>
-            <div className="text-center">
+            <div data-animate="up" data-delay="4" className="text-center">
               <div className="text-3xl font-bold gradient-text">100%</div>
               <div className="text-white/40 text-xs mt-1">mobile-ready</div>
             </div>
-            <div className="text-center">
+            <div data-animate="up" data-delay="5" className="text-center">
               <div className="text-3xl font-bold gradient-text">$3,500</div>
               <div className="text-white/40 text-xs mt-1">desde MXN</div>
             </div>
@@ -225,10 +225,10 @@ export default function Home() {
       <section id="servicios" className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 data-animate="up" className="text-4xl md:text-5xl font-bold mb-4">
               Planes y <span className="gradient-text">Precios</span>
             </h2>
-            <p className="text-white/50 text-lg max-w-xl mx-auto">
+            <p data-animate="up" data-delay="1" className="text-white/50 text-lg max-w-xl mx-auto">
               Sin contratos largos. Sin letras pequeñas. Precio claro desde el primer día.
             </p>
           </div>
@@ -237,7 +237,10 @@ export default function Home() {
             {planes.map((plan, i) => (
               <div
                 key={i}
-                className={`glass rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 relative ${plan.popular ? "animate-glow" : "hover:border-white/20"
+                data-tilt
+                data-animate="up"
+                data-delay={String(i + 1)}
+                className={`glass rounded-2xl p-8 flex flex-col relative ${plan.popular ? "animate-glow" : "hover:border-white/20"
                   }`}
                 style={plan.popular ? { borderColor: "rgba(0, 180, 216, 0.4)" } : {}}
               >
@@ -298,13 +301,13 @@ export default function Home() {
       </section>
 
       {/* ===== PROCESO ===== */}
-      <section id="proceso" className="py-28 px-6 bg-[#0d0d0d]">
+      <section id="proceso" className="py-28 px-6 bg-[#06060a]/60">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 data-animate="up" className="text-4xl md:text-5xl font-bold mb-4">
               ¿Cómo <span className="gradient-text">funciona?</span>
             </h2>
-            <p className="text-white/50 text-lg">
+            <p data-animate="up" data-delay="1" className="text-white/50 text-lg">
               Tu sitio web listo en exactamente <strong className="text-white">5 días hábiles</strong>
             </p>
           </div>
@@ -313,6 +316,8 @@ export default function Home() {
             {pasos.map((paso, i) => (
               <div
                 key={i}
+                data-animate="up"
+                data-delay={String(i + 1)}
                 className="glass rounded-2xl p-6 text-center hover:-translate-y-1 transition-all"
               >
                 <div className="text-4xl mb-4">{paso.icono}</div>
@@ -335,10 +340,10 @@ export default function Home() {
       <section id="nosotros" className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 data-animate="up" className="text-4xl md:text-5xl font-bold mb-4">
               ¿Por qué <span className="gradient-text">EthanStudio?</span>
             </h2>
-            <p className="text-white/50 text-lg max-w-xl mx-auto">
+            <p data-animate="up" data-delay="1" className="text-white/50 text-lg max-w-xl mx-auto">
               Agencias cobran el triple y tardan meses. Nosotros entregamos rápido, bonito y a precio justo.
             </p>
           </div>
@@ -347,7 +352,10 @@ export default function Home() {
             {ventajas.map((v, i) => (
               <div
                 key={i}
-                className="glass rounded-2xl p-7 hover:border-[#00b4d8]/25 transition-all hover:-translate-y-1"
+                data-tilt
+                data-animate="up"
+                data-delay={String(i + 1)}
+                className="glass rounded-2xl p-7 hover:border-[#00b4d8]/25 transition-all"
               >
                 <div className="text-4xl mb-5">{v.icono}</div>
                 <h3 className="font-bold text-lg mb-2">{v.titulo}</h3>
@@ -359,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* ===== CONTACTO / CTA FINAL ===== */}
-      <section id="contacto" className="py-28 px-6 bg-[#0d0d0d]">
+      <section id="contacto" className="py-28 px-6 bg-[#06060a]/60">
         <div className="max-w-2xl mx-auto text-center">
           {/* Decoración */}
           <div className="inline-flex items-center gap-2 bg-[#00f5a0]/10 border border-[#00f5a0]/20 text-[#00f5a0] text-sm px-5 py-2 rounded-full mb-8">
@@ -367,10 +375,10 @@ export default function Home() {
             <span>Respuesta en menos de 24 horas</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 data-animate="up" className="text-4xl md:text-5xl font-bold mb-6">
             ¿Listo para <span className="gradient-text">empezar?</span>
           </h2>
-          <p className="text-white/50 text-lg mb-10 leading-relaxed">
+          <p data-animate="up" data-delay="1" className="text-white/50 text-lg mb-10 leading-relaxed">
             Escríbenos por WhatsApp y cuéntanos sobre tu negocio.
             Te damos una cotización gratis sin compromiso.
           </p>

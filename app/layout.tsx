@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MatrixBackground from "./components/MatrixBackground";
+import PageEffects from "./components/PageEffects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-/* SEO: Información que aparece en Google y redes sociales */
 export const metadata: Metadata = {
   title: "EthanStudio | Sitios Web Profesionales en México",
   description:
@@ -30,32 +29,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
-      <body className="text-white min-h-screen" style={{ background: '#050505' }}>
-        {/* z-0: Canvas animado global — fijo, detrás de todo */}
-        <MatrixBackground />
-        {/* z-1: Overlay oscuro para legibilidad del contenido */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 1,
-            background: 'rgba(5, 5, 5, 0.82)',
-            pointerEvents: 'none',
-          }}
-        />
-        {/* z-2: Todo el contenido de la página por encima */}
-        <div style={{ position: 'relative', zIndex: 2 }}>
+    <html lang="es" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="text-white min-h-screen">
+
+        {/* ── FONDO GLOBAL (position: fixed, z-index: 0) ── */}
+        <div className="bg-scene" aria-hidden="true">
+          {/* Capa 1: blobs de luz animados */}
+          <div className="bg-blob blob-cyan" />
+          <div className="bg-blob blob-purple" />
+          <div className="bg-blob blob-green" />
+          {/* Capa 2: grid de puntos */}
+          <div className="bg-grid" />
+          {/* Capa 3: viñeta */}
+          <div className="bg-vignette" />
+          {/* Capa 4: overlay de legibilidad */}
+          <div className="bg-overlay" />
+        </div>
+
+        {/* ── EFECTOS JS (scroll reveal + tilt + parallax) ── */}
+        <PageEffects />
+
+        {/* ── CONTENIDO (z-index: 1, encima de todo) ── */}
+        <div className="content-root">
           {children}
         </div>
+
       </body>
     </html>
   );
