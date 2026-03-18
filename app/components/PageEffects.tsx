@@ -22,7 +22,7 @@ export default function PageEffects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
-            observer.unobserve(entry.target); // solo una vez
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -30,37 +30,9 @@ export default function PageEffects() {
     );
     document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
 
-    // ── 3. CARD TILT (con RAF para no bloquear) ─────────────────
-    const cards = document.querySelectorAll<HTMLElement>('[data-tilt]');
-    let rafTilt: number;
-
-    cards.forEach((card) => {
-      const onMove = (e: MouseEvent) => {
-        cancelAnimationFrame(rafTilt);
-        rafTilt = requestAnimationFrame(() => {
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          card.style.transform = `perspective(900px) rotateX(${y * -6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
-        });
-      };
-      const onLeave = () => {
-        cancelAnimationFrame(rafTilt);
-        card.style.transform = '';
-      };
-      card.addEventListener('mousemove', onMove);
-      card.addEventListener('mouseleave', onLeave);
-      (card as any)._cleanup = () => {
-        card.removeEventListener('mousemove', onMove);
-        card.removeEventListener('mouseleave', onLeave);
-      };
-    });
-
     return () => {
       window.removeEventListener('scroll', onNavScroll);
       observer.disconnect();
-      cancelAnimationFrame(rafTilt);
-      cards.forEach((card) => (card as any)._cleanup?.());
     };
   }, []);
 

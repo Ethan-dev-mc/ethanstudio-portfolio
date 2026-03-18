@@ -36,16 +36,7 @@ export default function RootLayout({
 
         {/* ── FONDO GLOBAL (position: fixed, z-index: 0) ── */}
         <div className="bg-scene" aria-hidden="true">
-          {/* Capa 1: blobs de luz animados */}
-          <div className="bg-blob blob-cyan" />
-          <div className="bg-blob blob-purple" />
-          <div className="bg-blob blob-green" />
-          {/* Capa 2: grid de puntos */}
           <div className="bg-grid" />
-          {/* Capa 3: viñeta */}
-          <div className="bg-vignette" />
-          {/* Capa 4: overlay de legibilidad */}
-          <div className="bg-overlay" />
         </div>
 
         {/* ── EFECTOS JS (scroll reveal + tilt + parallax) ── */}

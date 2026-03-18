@@ -28,83 +28,21 @@ body {
   position: fixed;
   inset: 0;
   z-index: 0;
-  overflow: hidden;
-  background: #07070f;
-}
-
-/* Blobs — filter:blur con will-change → GPU compositing, ligero */
-.bg-blob {
-  position: absolute;
-  border-radius: 50%;
-  will-change: transform;
-  pointer-events: none;
-}
-
-.blob-cyan {
-  width: 500px;
-  height: 500px;
-  top: -80px;
-  left: -60px;
-  background: rgba(0, 180, 216, 0.45);
-  filter: blur(110px);
-  animation: floatA 20s ease-in-out infinite;
-}
-
-.blob-purple {
-  width: 420px;
-  height: 420px;
-  bottom: -60px;
-  right: -60px;
-  background: rgba(124, 58, 237, 0.40);
-  filter: blur(100px);
-  animation: floatB 26s ease-in-out infinite;
-}
-
-.blob-green {
-  width: 320px;
-  height: 320px;
-  top: 38%;
-  right: 12%;
-  background: rgba(0, 245, 160, 0.25);
-  filter: blur(80px);
-  animation: floatC 18s ease-in-out infinite 3s;
-}
-
-@keyframes floatA {
-  0%,100% { transform: translate(0, 0); }
-  33%      { transform: translate(60px, 40px); }
-  66%      { transform: translate(-30px, 60px); }
-}
-@keyframes floatB {
-  0%,100% { transform: translate(0, 0); }
-  50%     { transform: translate(-50px, -35px); }
-}
-@keyframes floatC {
-  0%,100% { transform: translate(0, 0); }
-  50%     { transform: translate(35px, -45px); }
+  /* Gradiente estático — cero costo de animación */
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(0,180,216,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(124,58,237,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 85%, rgba(0,245,160,0.07) 0%, transparent 45%),
+    #07070f;
 }
 
 /* Grid de puntos */
 .bg-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(0,180,216,.20) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: .5;
-}
-
-/* Viñeta — oscurece bordes para dar profundidad */
-.bg-vignette {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 120% 80% at 50% 50%, transparent 30%, rgba(7,7,15,.90) 100%);
-}
-
-/* Overlay ligero — solo para mejorar contraste del texto */
-.bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7,7,15,.45);
+  background-image: radial-gradient(rgba(0,180,216,.15) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: .45;
 }
 
 /* Capa de contenido */
